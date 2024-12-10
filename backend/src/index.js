@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import { connectDB } from "./lib/db.js";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
 import adminRoutes from "./routes/admin.route.js";
@@ -19,5 +20,6 @@ app.use("/api/albums", albumRoutes);
 app.use("/api/stats", statRoutes);
 
 app.listen(PORT, () => {
+  connectDB();
   console.log(`Server running at http://localhost:${PORT}`);
 });
